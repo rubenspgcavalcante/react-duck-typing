@@ -1,5 +1,6 @@
-const {DefinePlugin} = require("webpack");
-const {resolve} = require("path");
+const { DefinePlugin } = require("webpack");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const { resolve } = require("path");
 
 module.exports = {
   devtool: "source-map",
@@ -22,24 +23,48 @@ module.exports = {
       {
         test: /.(sass|scss)$/,
         include: [resolve('app')],
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'sass-loader']
+        })
+      },
+      {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        use: [
+          'file-loader',
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              bypassOnDebug: true,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(ogv|ogg|mp3|mp4|wav|mpe?g)$/i,
+        use: 'file-loader'
+      },
+      {
+        test: /.(ttf|otf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
         use: [{
-          loader: "style-loader"
-        }, {
-          loader: "css-loader"
-        }, {
-          loader: "sass-loader"
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'fonts/'
+          }
         }]
-      }
+      },
     ]
   },
   resolve: {
     modules: ['node_modules', resolve('app'),]
   },
   plugins: [
+    new ExtractTextPlugin('style.css'),
     new DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV)
       }
     })
   ]
-} 
+};

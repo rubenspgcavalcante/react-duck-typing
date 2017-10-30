@@ -1,0 +1,46 @@
+$fa-font-path: "~font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome.scss";
+
+@import "~bulma/bulma.sass";
+
+@import "player_control";
+@import "slide_show";
+
+.app-template {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+
+  .app-content {
+    padding: 2rem;
+    flex: 1;
+  }
+
+  .card {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+    &-content {
+      flex-grow: 1;
+    }
+  }
+
+  .player {
+
+    &-audio {
+      .card {
+        height: auto;
+        &-content {
+          display: none;
+        }
+      }
+    }
+
+    &-video, &-slides {
+      .card {
+        height: 100%;
+      }
+    }
+  }
+}

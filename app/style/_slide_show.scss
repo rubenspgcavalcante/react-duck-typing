@@ -1,0 +1,38 @@
+@keyframes loading-bar {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.slide-show {
+  width: 100%;
+
+  &-container {
+    display: table;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .loading-bar {
+    position: absolute;
+    background-color: rgba(#000, .4);
+    width: 100%;
+    bottom: 0.33rem;
+
+    .filling-bar {
+      background-color: rgba(#FFF, 0.8);
+      box-shadow: 0 -2px 8px #FFF;
+      margin-top: 0;
+      height: 0.2rem;
+      width: 0;
+
+      &.playing {
+        animation-name: loading-bar;
+        animation-iteration-count: infinite;
+      }
+    }
+  }
+}

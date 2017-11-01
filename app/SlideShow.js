@@ -29,6 +29,12 @@ export default class SlideShow extends PureComponent {
     this.setState({ current: 0 });
   }
 
+  componentWillReceiveProps({ play, pause, stop }) {
+    play && this.play();
+    pause && this.pause();
+    stop && this.load();
+  }
+
   render() {
     const { current, playing } = this.state;
     const { slides } = this.props;
@@ -37,7 +43,7 @@ export default class SlideShow extends PureComponent {
     return (
       <div className="slide-show">
         <div className="slide-show-container">
-          <img src={slides[current % len]} />
+          <img src={slides[current % len]}/>
           <div className="loading-bar">
             <div style={{ animationDuration: `${this.displayTime / 1000}s` }}
                  className={`filling-bar ${playing ? 'playing' : ''}`}/>

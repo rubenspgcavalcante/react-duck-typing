@@ -2,8 +2,7 @@ $fa-font-path: "~font-awesome/fonts";
 @import "~font-awesome/scss/font-awesome.scss";
 
 @import "~bulma/bulma.sass";
-
-@import "player_control";
+@import "../modules/using-refs/style/index";
 @import "slide_show";
 
 .app-template {
@@ -38,6 +37,11 @@ $fa-font-path: "~font-awesome/fonts";
     }
 
     &-video, &-slides {
+      video {
+        margin: 0 auto;
+        display: block;
+      }
+
       .card {
         height: 100%;
       }

@@ -1,7 +1,7 @@
 import React, { cloneElement, PureComponent } from 'react';
 import { object, string } from 'prop-types';
 
-export default class PlayerControl extends PureComponent {
+export default class RefPlayerControl extends PureComponent {
   static propTypes = {
     title: string,
     icon: string,
@@ -24,14 +24,20 @@ export default class PlayerControl extends PureComponent {
             {playable}
           </div>
           <footer className="card-footer">
-            <a href="#" className="card-footer-item button" onClick={() => this.refs.playable.load()}><i
-              className="fa fa-stop"/></a>
+            <a href="#" className="card-footer-item button" onClick={(ev) => {
+              ev.preventDefault();
+              this.refs.playable.load()
+            }}><i className="fa fa-stop"/></a>
 
-            <a href="#" className="card-footer-item button" onClick={() => this.refs.playable.pause()}><i
-              className="fa fa-pause"/></a>
+            <a href="#" className="card-footer-item button" onClick={(ev) => {
+              ev.preventDefault();
+              this.refs.playable.pause()
+            }}><i className="fa fa-pause"/></a>
 
-            <a href="#" className="card-footer-item button" onClick={() => this.refs.playable.play()}><i
-              className="fa fa-play"/></a>
+            <a href="#" className="card-footer-item button" onClick={(ev) => {
+              ev.preventDefault();
+              this.refs.playable.play()
+            }}><i className="fa fa-play"/></a>
           </footer>
         </div>
       </div>

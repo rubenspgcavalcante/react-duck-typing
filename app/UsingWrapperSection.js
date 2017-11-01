@@ -6,9 +6,9 @@ import quack2 from "./assets/quack-2.jpg";
 import quack3 from "./assets/quack-3.jpg";
 
 import Message from './commons/ui/components/Message';
-import PlayerControl from "./modules/right-way/components/PlayerControl";
+import PlayerControl from "./modules/using-wrapper/components/PlayerControl";
+import media from "./modules/using-wrapper/components/media";
 import SlideShow from "./SlideShow";
-import media from "./modules/right-way/components/@media";
 
 const slides = [quack1, quack2, quack3];
 const playables = [
@@ -18,7 +18,7 @@ const playables = [
   },
   {
     Component: media(<video src={bigBuckBunny}/>),
-    title: "Video track", icon: "player-video", type: "video"
+    title: "Video track", icon: "video-camera ", type: "video"
   },
   {
     Component: (props) => <SlideShow {...props} slides={slides}/>,

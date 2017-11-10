@@ -9,6 +9,8 @@ import Message from './commons/ui/components/Message';
 import PlayerControl from "./modules/using-wrapper/components/PlayerControl";
 import media from "./modules/using-wrapper/components/media";
 import SlideShow from "./SlideShow";
+import ExtLink from "./commons/ui/components/ExtLink";
+import { MEDIA_HOC_URL, PLAYER_CONTROL_URL, REACT_DOCS_HOC_URL } from "./commons/constants/urls";
 
 const slides = [quack1, quack2, quack3];
 const playables = [
@@ -29,11 +31,13 @@ const playables = [
 export default () =>
   <section className="section">
     <h1 className="title">The Proper React Way</h1>
-    <Message title="Using Wrappers">
+    <Message title="Using HOC">
       <p>Instead of using ref's for everything we can just encapsulate the <b>audio</b> and <b>video</b> elements
-        inside a wrapper which listens to <b>property</b> changes and then call these element methods</p>
-      <p>For everyone else (React components), we're going to work passing always the same properties
-        (<b>play</b>, <b>pause</b> and <b>stop</b>), expecting the same behaviour of everyone.</p>
+        inside a <ExtLink url={REACT_DOCS_HOC_URL}>high order component</ExtLink> which listens to <b>property</b>
+        changes and then call these element methods. You can check it <ExtLink url={MEDIA_HOC_URL}>here</ExtLink>.</p>
+      <p>For everyone else (React components), the refactored <ExtLink url={PLAYER_CONTROL_URL}>PlayerControl</ExtLink>
+        are going to pass always the same properties (<b>play</b>, <b>pause</b> and <b>stop</b>), expecting the same
+        behaviour from everyone.</p>
     </Message>
     <div className="container">
       <div className="columns">

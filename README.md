@@ -1,5 +1,6 @@
 # React Duck Typing
 ## A sample of duck typing using React
+Check the Medium post related to this example [here](https://medium.com/front-end-hacking/react-and-duck-typing-1e22f73563e7)
 
 Check the live version [here](https://rubenspgcavalcante.github.io/react-duck-typing/)
 
